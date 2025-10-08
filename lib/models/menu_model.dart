@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // Parent class dengan enkapsulasi
 class MenuModel {
-  String _title;
+  String title;
   String _description;
   Color _bgColor;
   String? _imagePath;
@@ -11,24 +11,18 @@ class MenuModel {
 
   // Constructor
   MenuModel(
-    this._title,
+    this.title,
     this._description,
     this._bgColor,
     this._icon, [
     this._imagePath,
     this._subtitle = "",
   ]);
-
-  // Getter
-  String get title => _title;
   String get description => _description;
   Color get bgColor => _bgColor;
   String? get imagePath => _imagePath;
   String get subtitle => _subtitle;
   IconData get icon => _icon;
-
-  // Setter
-  set title(String v) => _title = v;
   set description(String v) => _description = v;
   set bgColor(Color v) => _bgColor = v;
   set imagePath(String? v) => _imagePath = v;

@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
 
     // ✅ validasi login fleksibel
     if ((email == "admin@gmail.com" && password == "123456") || // admin
-        (email == "user@gmail.com" && password == "123456") || // default user
+        (email == "shofie@gmail.com" && password == "123456") || // default user
         (email == registeredEmail && password == registeredPassword)) {
       String displayName = email.split("@")[0];
 

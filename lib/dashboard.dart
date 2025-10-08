@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'models/menu_model.dart';
-import 'detail.dart';
+import 'package:flutter_application_1/detail_page.dart';
+import 'package:flutter_application_1/models/menu_model.dart';
+import 'profile_page.dart';
 
 class DashboardPage extends StatelessWidget {
   final String username;
@@ -10,9 +11,9 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF4B0082),
+      backgroundColor: const Color(0xFF4B0082), // ungu
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1976D2),
+        backgroundColor: const Color(0xFF1976D2), // biru
         elevation: 4,
         title: const Text(
           "Dashboard",
@@ -21,6 +22,22 @@ class DashboardPage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(Icons.person, color: Colors.black),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ProfilePage(username: username),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -63,21 +80,32 @@ class DashboardPage extends StatelessWidget {
   }
 
   Widget _buildMenuCard(BuildContext context, MenuModel menu) {
-    return Card(
-      color: menu.bgColor, // warna langsung dari model
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    return Container(
       margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: menu.bgColor.withOpacity(0.9),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
       child: ListTile(
-        leading: Icon(menu.icon, color: Colors.white, size: 32),
+        contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        leading: Icon(menu.icon, color: Colors.black, size: 32),
         title: Text(
           menu.title,
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
+            fontSize: 18,
           ),
         ),
         subtitle: Text(
-          menu.subtitle, // ✅ subtitle ditampilkan
+          menu.subtitle,
           style: const TextStyle(color: Colors.white70),
         ),
         trailing: const Icon(Icons.arrow_forward_ios, color: Colors.white),
